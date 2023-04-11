@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.calendar;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -41,5 +39,13 @@ public class Cell extends JButton {
         else {
             setForeground(new Color(169, 169, 169));
         }
+    }
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        if (title) {
+            grphcs.setColor(new Color(213,213,213));
+            grphcs.drawLine(0, getHeight()-1, getWidth(), getHeight()-1);
+        }
+        super.paintComponent(grphcs);
     }
 }
