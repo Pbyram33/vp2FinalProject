@@ -2,17 +2,21 @@
 package com.mycompany.calendar;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pbyra
  */
-public class CalendarGui extends javax.swing.JLayeredPane {
+public class CalendarGui extends javax.swing.JLayeredPane{
 
     /**
      * Creates new form CalendarGui
      */
+    
     private int month;
     private int year;
     public CalendarGui(int month, int year) {
@@ -135,6 +139,11 @@ public class CalendarGui extends javax.swing.JLayeredPane {
 
         thu.setText("Thu");
         thu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        thu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thuActionPerformed(evt);
+            }
+        });
         add(thu);
 
         fri.setText("Fri");
@@ -146,129 +155,339 @@ public class CalendarGui extends javax.swing.JLayeredPane {
         add(sat);
 
         cell8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell8ActionPerformed(evt);
+            }
+        });
         add(cell8);
 
         cell9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell9ActionPerformed(evt);
+            }
+        });
         add(cell9);
 
         cell10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell10ActionPerformed(evt);
+            }
+        });
         add(cell10);
 
         cell11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell11ActionPerformed(evt);
+            }
+        });
         add(cell11);
 
         cell12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell12ActionPerformed(evt);
+            }
+        });
         add(cell12);
 
         cell13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell13ActionPerformed(evt);
+            }
+        });
         add(cell13);
 
         cell14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell14ActionPerformed(evt);
+            }
+        });
         add(cell14);
 
         cell15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell15ActionPerformed(evt);
+            }
+        });
         add(cell15);
 
         cell16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell16ActionPerformed(evt);
+            }
+        });
         add(cell16);
 
         cell17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell17ActionPerformed(evt);
+            }
+        });
         add(cell17);
 
         cell18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell18ActionPerformed(evt);
+            }
+        });
         add(cell18);
 
         cell19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell19ActionPerformed(evt);
+            }
+        });
         add(cell19);
 
         cell20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell20ActionPerformed(evt);
+            }
+        });
         add(cell20);
 
         cell21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell21ActionPerformed(evt);
+            }
+        });
         add(cell21);
 
         cell22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell22ActionPerformed(evt);
+            }
+        });
         add(cell22);
 
         cell23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell23ActionPerformed(evt);
+            }
+        });
         add(cell23);
 
         cell24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell24ActionPerformed(evt);
+            }
+        });
         add(cell24);
 
         cell25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell25ActionPerformed(evt);
+            }
+        });
         add(cell25);
 
         cell26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell26ActionPerformed(evt);
+            }
+        });
         add(cell26);
 
         cell27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell27ActionPerformed(evt);
+            }
+        });
         add(cell27);
 
         cell28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell28ActionPerformed(evt);
+            }
+        });
         add(cell28);
 
         cell29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell29ActionPerformed(evt);
+            }
+        });
         add(cell29);
 
         cell30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell30ActionPerformed(evt);
+            }
+        });
         add(cell30);
 
         cell31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell31ActionPerformed(evt);
+            }
+        });
         add(cell31);
 
         cell32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell32ActionPerformed(evt);
+            }
+        });
         add(cell32);
 
         cell33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell33ActionPerformed(evt);
+            }
+        });
         add(cell33);
 
         cell34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell34ActionPerformed(evt);
+            }
+        });
         add(cell34);
 
         cell35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell35ActionPerformed(evt);
+            }
+        });
         add(cell35);
 
         cell36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell36ActionPerformed(evt);
+            }
+        });
         add(cell36);
 
         cell37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell37ActionPerformed(evt);
+            }
+        });
         add(cell37);
 
         cell38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell38ActionPerformed(evt);
+            }
+        });
         add(cell38);
 
         cell39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell39ActionPerformed(evt);
+            }
+        });
         add(cell39);
 
         cell40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell40ActionPerformed(evt);
+            }
+        });
         add(cell40);
 
         cell41.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell41ActionPerformed(evt);
+            }
+        });
         add(cell41);
 
         cell42.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell42ActionPerformed(evt);
+            }
+        });
         add(cell42);
 
         cell43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell43ActionPerformed(evt);
+            }
+        });
         add(cell43);
 
         cell44.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell44ActionPerformed(evt);
+            }
+        });
         add(cell44);
 
         cell45.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell45ActionPerformed(evt);
+            }
+        });
         add(cell45);
 
         cell46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell46ActionPerformed(evt);
+            }
+        });
         add(cell46);
 
         cell47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell47ActionPerformed(evt);
+            }
+        });
         add(cell47);
 
         cell48.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell48ActionPerformed(evt);
+            }
+        });
         add(cell48);
 
         cell49.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cell49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cell49ActionPerformed(evt);
+            }
+        });
         add(cell49);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -279,6 +498,178 @@ public class CalendarGui extends javax.swing.JLayeredPane {
     private void wedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_wedActionPerformed
+
+    private void thuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_thuActionPerformed
+
+    private void cell12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell12ActionPerformed
+        Main.intButton.setEnabled(true);
+    }//GEN-LAST:event_cell12ActionPerformed
+
+    private void cell8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell8ActionPerformed
+        Main.intButton.setEnabled(true);
+    }//GEN-LAST:event_cell8ActionPerformed
+
+    private void cell9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell9ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell9ActionPerformed
+
+    private void cell10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell10ActionPerformed
+        Main.intButton.setEnabled(true);
+    }//GEN-LAST:event_cell10ActionPerformed
+
+    private void cell11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell11ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell11ActionPerformed
+
+    private void cell13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell13ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell13ActionPerformed
+
+    private void cell14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell14ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell14ActionPerformed
+
+    private void cell15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell15ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell15ActionPerformed
+
+    private void cell16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell16ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell16ActionPerformed
+
+    private void cell17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell17ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell17ActionPerformed
+
+    private void cell18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell18ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell18ActionPerformed
+
+    private void cell19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell19ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell19ActionPerformed
+
+    private void cell20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell20ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell20ActionPerformed
+
+    private void cell21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell21ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell21ActionPerformed
+
+    private void cell22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell22ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell22ActionPerformed
+
+    private void cell23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell23ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell23ActionPerformed
+
+    private void cell24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell24ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell24ActionPerformed
+
+    private void cell25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell25ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell25ActionPerformed
+
+    private void cell26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell26ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell26ActionPerformed
+
+    private void cell27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell27ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell27ActionPerformed
+
+    private void cell28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell28ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell28ActionPerformed
+
+    private void cell29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell29ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell29ActionPerformed
+
+    private void cell30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell30ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell30ActionPerformed
+
+    private void cell31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell31ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell31ActionPerformed
+
+    private void cell32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell32ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell32ActionPerformed
+
+    private void cell33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell33ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell33ActionPerformed
+
+    private void cell34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell34ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell34ActionPerformed
+
+    private void cell35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell35ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell35ActionPerformed
+
+    private void cell36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell36ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell36ActionPerformed
+
+    private void cell37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell37ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell37ActionPerformed
+
+    private void cell38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell38ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell38ActionPerformed
+
+    private void cell39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell39ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell39ActionPerformed
+
+    private void cell40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell40ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell40ActionPerformed
+
+    private void cell41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell41ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell41ActionPerformed
+
+    private void cell42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell42ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell42ActionPerformed
+
+    private void cell43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell43ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell43ActionPerformed
+
+    private void cell44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell44ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell44ActionPerformed
+
+    private void cell45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell45ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell45ActionPerformed
+
+    private void cell46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell46ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell46ActionPerformed
+
+    private void cell47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell47ActionPerformed
+        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_cell47ActionPerformed
+
+    private void cell48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell48ActionPerformed
+        Main.intButton.setEnabled(true);
+    }//GEN-LAST:event_cell48ActionPerformed
+
+    private void cell49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell49ActionPerformed
+        Main.intButton.setEnabled(true);
+    }//GEN-LAST:event_cell49ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -332,4 +723,7 @@ public class CalendarGui extends javax.swing.JLayeredPane {
     private com.mycompany.calendar.Cell tue;
     private com.mycompany.calendar.Cell wed;
     // End of variables declaration//GEN-END:variables
-}
+
+
+    }
+

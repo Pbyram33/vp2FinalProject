@@ -1,6 +1,7 @@
 
 package com.mycompany.calendar;
 
+import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -170,7 +171,8 @@ public class CalendarCustom extends javax.swing.JPanel {
         else {
             month++;
         }
-        slide.show(new CalendarGui(month, year), PanelSlide.AnimateType.TO_LEFT);
+        slide.show(new CalendarGui(month, year) {
+        }, PanelSlide.AnimateType.TO_LEFT);
         showMY();
     }//GEN-LAST:event_nextButtonActionPerformed
 
@@ -182,7 +184,8 @@ public class CalendarCustom extends javax.swing.JPanel {
         else {
             month--;
         }
-        slide.show(new CalendarGui(month, year), PanelSlide.AnimateType.TO_RIGHT);
+        slide.show(new CalendarGui(month, year) {
+        }, PanelSlide.AnimateType.TO_RIGHT);
         showMY();
     }//GEN-LAST:event_prevButtonActionPerformed
 
