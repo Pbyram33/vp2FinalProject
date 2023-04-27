@@ -7,23 +7,23 @@ package com.mycompany.calendar;
 import java.time.LocalDateTime;
 
 public class Event {
-    private int startTime;
-    private int endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private String title;
     private String description;
 
-    public Event(String title, String description, int startTime, int endTime) {
+    public Event(String title, String description, LocalDateTime startTime, LocalDateTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.title = title;
         this.description = description;
     }
 
-    public int getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public int getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 

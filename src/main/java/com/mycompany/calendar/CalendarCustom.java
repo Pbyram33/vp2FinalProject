@@ -19,7 +19,7 @@ public class CalendarCustom extends javax.swing.JPanel {
     public CalendarCustom() {
         initComponents();
         thisMonth();
-        slide.show(new CalendarGui(3, 2023), PanelSlide.AnimateType.TO_RIGHT);
+        slide.show(new CalendarGui(4, 2023), PanelSlide.AnimateType.TO_RIGHT);
         
     }
 

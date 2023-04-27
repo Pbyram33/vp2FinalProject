@@ -1,10 +1,16 @@
 
 package com.mycompany.calendar;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +18,7 @@ import javax.swing.JOptionPane;
  * @author pbyra
  */
 public class CalendarGui extends javax.swing.JLayeredPane{
+    
 
     /**
      * Creates new form CalendarGui
@@ -55,6 +62,7 @@ public class CalendarGui extends javax.swing.JLayeredPane{
         }
         
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -504,7 +512,15 @@ public class CalendarGui extends javax.swing.JLayeredPane{
     }//GEN-LAST:event_thuActionPerformed
 
     private void cell12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell12ActionPerformed
-        Main.intButton.setEnabled(true);
+        LocalDate selectedDate = LocalDate.of(2023, 4, 2023);
+        cell12.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // display the event creation frame and pass the selected date as a parameter
+            EventFrame eventCreationFrame = new EventFrame(selectedDate);
+            eventCreationFrame.setVisible(true);
+        }
+    });
     }//GEN-LAST:event_cell12ActionPerformed
 
     private void cell8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell8ActionPerformed
