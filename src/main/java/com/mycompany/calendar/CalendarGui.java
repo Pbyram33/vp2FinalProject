@@ -64,7 +64,7 @@ public class CalendarGui extends javax.swing.JLayeredPane{
             calendarDates2D.add(week);
         }
     }
-    
+    // code taken from https://www.youtube.com/watch?v=YivaMCfichQ&t=69s
     private void init() {
         sun.asTitle();
         mon.asTitle();
@@ -94,6 +94,7 @@ public class CalendarGui extends javax.swing.JLayeredPane{
         }
         
     }
+    // code ends
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

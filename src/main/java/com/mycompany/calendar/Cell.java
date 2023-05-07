@@ -11,6 +11,8 @@ import javax.swing.JLabel;
  *
  * @author pbyra
  */
+
+//code taken from: https://www.youtube.com/watch?v=YivaMCfichQ&t=69s
 public class Cell extends JButton {
     private Date date;
     private boolean title;
@@ -49,3 +51,4 @@ public class Cell extends JButton {
         super.paintComponent(grphcs);
     }
 }
+// code end

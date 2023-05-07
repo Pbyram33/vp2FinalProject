@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.Timer;
-
+// code taken from https://www.youtube.com/watch?v=YivaMCfichQ&t=69s
 public class PanelSlide extends javax.swing.JPanel {
     
      public int getAnimate() {
@@ -122,3 +122,4 @@ public static enum AnimateType {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
+//code ends
