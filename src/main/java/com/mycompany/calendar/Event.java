@@ -4,15 +4,17 @@
  */
 package com.mycompany.calendar;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Event {
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private String title;
-    private String description;
+    public LocalDateTime startTime;
+    public LocalDateTime endTime;
+    public String title;
+    public String description;
+    public LocalDate date;
 
-    public Event(String title, String description, LocalDateTime startTime, LocalDateTime endTime) {
+    public Event(LocalDate Date,String title, String description, LocalDateTime startTime, LocalDateTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.title = title;
@@ -33,5 +35,12 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

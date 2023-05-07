@@ -1,10 +1,26 @@
 
 package com.mycompany.calendar;
 
+import static com.mycompany.calendar.Main.eventList;
+import java.awt.Dimension;
+import java.awt.List;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import swing.PanelSlide;
 
@@ -16,12 +32,84 @@ public class CalendarCustom extends javax.swing.JPanel {
 
     private int month;
     private int year;
+    private HashMap<String, Event> eventNameToEventMap;
+    private LocalDate currentMonth;
+    public ArrayList<LocalDate> calendarDates;
+    public ArrayList<ArrayList<LocalDate>> calendarDates2D;
     public CalendarCustom() {
         initComponents();
+        eventNameToEventMap = new HashMap<>();
         thisMonth();
-        slide.show(new CalendarGui(4, 2023), PanelSlide.AnimateType.TO_RIGHT);
+        this.currentMonth = LocalDate.now();
+        eventComboBox.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2) { // Check if it's a double-click
+                String selectedEventName = (String) eventComboBox.getSelectedItem();
+        Event selectedEvent = eventNameToEventMap.get(selectedEventName);
+        
+        if (selectedEvent != null) {
+            String message = String.format("Description: %s\nStart time: %s\nEnd time: %s", 
+                                            selectedEvent.getDescription(), 
+                                            selectedEvent.getStartTime(), 
+                                            selectedEvent.getEndTime());
+            
+            Object[] q1 = { "Delete", "Edit", "Ok"};
+            int response1 = JOptionPane.showOptionDialog(null, message, "Event Details", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q1, 0);
+            switch (response1) {
+                case 0:
+                        eventNameToEventMap.remove(selectedEventName);
+                                Main.eventList.get(selectedEvent.getDate()).remove(selectedEvent);
+                                eventComboBox.removeItem(selectedEventName);
+                                updateEventsComboBox();
+                                break;
+                                
+                case 1:
+                    EventFrame eventFrame = new EventFrame(selectedEvent.getDate());
+                                eventFrame.setVisible(true);
+                                eventFrame.addWindowListener(new WindowAdapter() {
+                                    @Override
+                                    public void windowClosed(WindowEvent e) {
+                                        eventNameToEventMap.remove(selectedEventName);
+                                        Main.eventList.get(selectedEvent.getDate()).remove(selectedEvent);
+                                        eventComboBox.removeItem(selectedEventName);
+                                        updateEventsComboBox();
+                                    }
+                                });
+                                break;
+                case 2:
+                    break;
+            }
+        }
+            }
+        }
+    });
+        slide.show(new CalendarGui(5, 2023), PanelSlide.AnimateType.TO_RIGHT);
         
     }
+    
+    private void showEventDetails(Event event) {
+    String message = "Description: " + event.getDescription() + "\n" +
+            "Start Time: " + event.getStartTime() + "\n" +
+            "End Time: " + event.getEndTime();
+
+    JOptionPane.showMessageDialog(this, message, "Event Details", JOptionPane.INFORMATION_MESSAGE);
+}
+    
+    public void updateEventsComboBox() {
+    System.out.println("Events list: " + Main.eventList);
+    eventComboBox.removeAllItems();
+    for (Map.Entry<LocalDate, LinkedList<Event>> entry : Main.eventList.entrySet()) {
+        for (Event event : entry.getValue()) {
+            String item = String.format("%s - %s (%s - %s)", event.title, event.description, event.startTime, event.endTime);
+            eventNameToEventMap.put(event.getTitle(), event);
+            event.setDate(entry.getKey());
+            eventComboBox.addItem(event.getTitle());
+        }
+    }
+    System.out.println("Events combo box item count: " + eventComboBox.getItemCount());
+}
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +123,8 @@ public class CalendarCustom extends javax.swing.JPanel {
         slide = new swing.PanelSlide();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        eventComboBox = new javax.swing.JComboBox<>();
+        holidayBtn = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
@@ -72,17 +162,36 @@ public class CalendarCustom extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        eventComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Created Events" }));
+
+        holidayBtn.setText("Check Public Holidays");
+        holidayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                holidayBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 234, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eventComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(holidayBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(eventComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(holidayBtn)
+                .addContainerGap())
         );
 
         nextButton.setText(">>");
@@ -130,9 +239,8 @@ public class CalendarCustom extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelMY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                        .addComponent(prevButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prevButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -174,6 +282,7 @@ public class CalendarCustom extends javax.swing.JPanel {
         slide.show(new CalendarGui(month, year) {
         }, PanelSlide.AnimateType.TO_LEFT);
         showMY();
+        CalendarGui.updateCalendarDates();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
@@ -187,13 +296,26 @@ public class CalendarCustom extends javax.swing.JPanel {
         slide.show(new CalendarGui(month, year) {
         }, PanelSlide.AnimateType.TO_RIGHT);
         showMY();
+        CalendarGui.updateCalendarDates();
     }//GEN-LAST:event_prevButtonActionPerformed
+
+    private void holidayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_holidayBtnActionPerformed
+        HolidayForm holidayFrame = new HolidayForm();
+        holidayFrame.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_holidayBtnActionPerformed
 
     private void thisMonth() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
+    }
+    
+    private int getMonth() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        month = calendar.get(Calendar.MONTH);
+        return month;
     }
 
     private void showMY() {
@@ -206,6 +328,8 @@ public class CalendarCustom extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> eventComboBox;
+    private javax.swing.JButton holidayBtn;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

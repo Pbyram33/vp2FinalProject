@@ -6,7 +6,9 @@ import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -22,6 +24,7 @@ import javax.swing.JPopupMenu;
 public class Main extends javax.swing.JFrame {
     static Map<LocalDate, LinkedList<Event>> eventList = new HashMap<>();
     private static final Color defColor = Color.BLUE;
+    private static CalendarCustom temp;
     private static JPopupMenu settingsMenu = new JPopupMenu("Settings");
     private static JMenuItem colorSchemeOption = new JMenuItem("Color Scheme");
     private static Preferences prefs = Preferences.userRoot().node("CustomizableCalendar");
@@ -34,6 +37,8 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        LocalDate firstDayOfMonth = LocalDate.of(2023, 4, 1);
+        LocalDate date = firstDayOfMonth.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
         settingsMenu.add(colorSchemeOption);
         colorSchemeOption.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -45,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setBackground(colorScheme);
 
         initComponents();
+        temp = calendarCustom1;
     }
     
     public void applyCustomizations() {
@@ -67,6 +73,11 @@ public class Main extends javax.swing.JFrame {
     prefs.putInt("colorSchemeGreen", color.getGreen());
     prefs.putInt("colorSchemeBlue", color.getBlue());
   }
+  
+  public static CalendarCustom getUIInstance() {
+    return temp;
+}
+
     
     public Color getColorScheme() {
     return colorScheme;
@@ -90,18 +101,9 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         calendarCustom1 = new com.mycompany.calendar.CalendarCustom();
-        intButton = new javax.swing.JButton();
         settingsBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        intButton.setText("Add Event");
-        intButton.setEnabled(false);
-        intButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                intButtonActionPerformed(evt);
-            }
-        });
 
         settingsBTN.setText("Settings");
         settingsBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -118,30 +120,21 @@ public class Main extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(calendarCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(intButton)
-                    .addComponent(settingsBTN))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(settingsBTN)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(intButton)
-                        .addGap(37, 37, 37)
-                        .addComponent(settingsBTN))
+                    .addComponent(settingsBTN)
                     .addComponent(calendarCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void intButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intButtonActionPerformed
-
-    }//GEN-LAST:event_intButtonActionPerformed
 
     private void settingsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsBTNActionPerformed
        settingsMenu.show(settingsBTN, 0, settingsBTN.getHeight());
@@ -184,7 +177,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.calendar.CalendarCustom calendarCustom1;
-    public static javax.swing.JButton intButton;
     private javax.swing.JButton settingsBTN;
     // End of variables declaration//GEN-END:variables
 }

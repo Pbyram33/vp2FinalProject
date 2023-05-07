@@ -6,7 +6,10 @@ import java.awt.Component;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +29,42 @@ public class CalendarGui extends javax.swing.JLayeredPane{
     
     private int month;
     private int year;
+    private static LocalDate currentMonth;
+    public static ArrayList<LocalDate> calendarDates;
+    public static ArrayList<ArrayList<LocalDate>> calendarDates2D;
     public CalendarGui(int month, int year) {
         initComponents();
         this.month = month;
         this.year = year;
+        this.calendarDates = new ArrayList<LocalDate>();
+        this.calendarDates2D = new ArrayList<ArrayList<LocalDate>>();
+        LocalDate firstDayOfMonth = LocalDate.of(year, month, 1);
+        this.currentMonth = firstDayOfMonth;
+        updateCalendarDates();
         init();
     }
 
+    public static void updateCalendarDates() {
+        calendarDates.clear();
+        calendarDates2D.clear();
+
+        LocalDate date = currentMonth.withDayOfMonth(1);
+        while (date.getMonthValue() == currentMonth.getMonthValue()) {
+            calendarDates.add(date);
+            date = date.plusDays(1);
+        }
+
+        date = currentMonth.withDayOfMonth(1).with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+        while (!date.isAfter(currentMonth.plusMonths(1).withDayOfMonth(1).with(TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY)))) {
+            ArrayList<LocalDate> week = new ArrayList<LocalDate>();
+            for (int i = 0; i < 7; i++) {
+                week.add(date);
+                date = date.plusDays(1);
+            }
+            calendarDates2D.add(week);
+        }
+    }
+    
     private void init() {
         sun.asTitle();
         mon.asTitle();
@@ -508,183 +540,594 @@ public class CalendarGui extends javax.swing.JLayeredPane{
     }//GEN-LAST:event_wedActionPerformed
 
     private void thuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thuActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_thuActionPerformed
 
     private void cell12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell12ActionPerformed
-        LocalDate selectedDate = LocalDate.of(2023, 4, 2023);
-        cell12.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // display the event creation frame and pass the selected date as a parameter
-            EventFrame eventCreationFrame = new EventFrame(selectedDate);
-            eventCreationFrame.setVisible(true);
+       int row = 0;
+       int col = 4;
+        LocalDate selectedDate = calendarDates2D.get(row).get(col);
+        if (selectedDate != null) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                    eventCreationFrame.setVisible(true);
+                }
+            });
         }
-    });
     }//GEN-LAST:event_cell12ActionPerformed
 
     private void cell8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell8ActionPerformed
-        Main.intButton.setEnabled(true);
+        int row = 0;
+       int col = 0;
+        LocalDate selectedDate = calendarDates2D.get(row).get(col);
+        if (selectedDate != null) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                    eventCreationFrame.setVisible(true);
+                }
+            });
+        }
     }//GEN-LAST:event_cell8ActionPerformed
 
     private void cell9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell9ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 0;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }
     }//GEN-LAST:event_cell9ActionPerformed
 
     private void cell10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell10ActionPerformed
-        Main.intButton.setEnabled(true);
+        int row = 0;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }        
     }//GEN-LAST:event_cell10ActionPerformed
 
     private void cell11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell11ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 0;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }               // TODO add your handling code here:
     }//GEN-LAST:event_cell11ActionPerformed
 
     private void cell13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell13ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 0;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                // TODO add your handling code here:
     }//GEN-LAST:event_cell13ActionPerformed
 
     private void cell14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell14ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 0;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }         
     }//GEN-LAST:event_cell14ActionPerformed
 
     private void cell15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell15ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 1;
+           int col = 0;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                // TODO add your handling code here:
     }//GEN-LAST:event_cell15ActionPerformed
 
     private void cell16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell16ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 1;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                // TODO add your handling code here:
     }//GEN-LAST:event_cell16ActionPerformed
 
     private void cell17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell17ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 1;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell17ActionPerformed
 
     private void cell18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell18ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 1;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                     // TODO add your handling code here:
     }//GEN-LAST:event_cell18ActionPerformed
 
     private void cell19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell19ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+        int row = 1;
+       int col = 4;
+        LocalDate selectedDate = null; 
+    if (calendarDates2D.size() > row && calendarDates2D.get(row).size() > col) {
+        selectedDate = calendarDates2D.get(row).get(col);
+    }
+    if (selectedDate != null) {
+        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+        eventCreationFrame.setVisible(true);
+    }
     }//GEN-LAST:event_cell19ActionPerformed
 
     private void cell20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell20ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 1;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                     // TODO add your handling code here:
     }//GEN-LAST:event_cell20ActionPerformed
 
     private void cell21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell21ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 1;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                     // TODO add your handling code here:
     }//GEN-LAST:event_cell21ActionPerformed
 
     private void cell22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell22ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 0;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                     // TODO add your handling code here:
     }//GEN-LAST:event_cell22ActionPerformed
 
     private void cell23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell23ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                     // TODO add your handling code here:
     }//GEN-LAST:event_cell23ActionPerformed
 
     private void cell24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell24ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell24ActionPerformed
 
     private void cell25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell25ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell25ActionPerformed
 
     private void cell26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell26ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 4;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell26ActionPerformed
 
     private void cell27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell27ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell27ActionPerformed
 
     private void cell28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell28ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 2;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell28ActionPerformed
 
     private void cell29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell29ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 0;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell29ActionPerformed
 
     private void cell30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell30ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell30ActionPerformed
 
     private void cell31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell31ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell31ActionPerformed
 
     private void cell32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell32ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell32ActionPerformed
 
     private void cell33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell33ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 4;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                  // TODO add your handling code here:
     }//GEN-LAST:event_cell33ActionPerformed
 
     private void cell34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell34ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell34ActionPerformed
 
     private void cell35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell35ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 3;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell35ActionPerformed
 
     private void cell36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell36ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 0;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   // TODO add your handling code here:
     }//GEN-LAST:event_cell36ActionPerformed
 
     private void cell37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell37ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell37ActionPerformed
 
     private void cell38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell38ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell38ActionPerformed
 
     private void cell39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell39ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell39ActionPerformed
 
     private void cell40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell40ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 4;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell40ActionPerformed
 
     private void cell41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell41ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell41ActionPerformed
 
     private void cell42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell42ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 4;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                 // TODO add your handling code here:
     }//GEN-LAST:event_cell42ActionPerformed
 
     private void cell43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell43ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 5;
+           int col = 0;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                   
     }//GEN-LAST:event_cell43ActionPerformed
 
     private void cell44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell44ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 5;
+           int col = 1;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                  // TODO add your handling code here:
     }//GEN-LAST:event_cell44ActionPerformed
 
     private void cell45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell45ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 5;
+           int col = 2;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }                // TODO add your handling code here:
     }//GEN-LAST:event_cell45ActionPerformed
 
     private void cell46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell46ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 5;
+           int col = 3;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }              // TODO add your handling code here:
     }//GEN-LAST:event_cell46ActionPerformed
 
     private void cell47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell47ActionPerformed
-        Main.intButton.setEnabled(true);        // TODO add your handling code here:
+            int row = 5;
+           int col = 4;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }               // TODO add your handling code here:
     }//GEN-LAST:event_cell47ActionPerformed
 
     private void cell48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell48ActionPerformed
-        Main.intButton.setEnabled(true);
+            int row = 5;
+           int col = 5;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }         
     }//GEN-LAST:event_cell48ActionPerformed
 
     private void cell49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cell49ActionPerformed
-        Main.intButton.setEnabled(true);
+            int row = 5;
+           int col = 6;
+            LocalDate selectedDate = calendarDates2D.get(row).get(col);
+            if (selectedDate != null) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        EventFrame eventCreationFrame = new EventFrame(selectedDate);
+                        eventCreationFrame.setVisible(true);
+                    }
+                });
+            }         
     }//GEN-LAST:event_cell49ActionPerformed
 
 
