@@ -1,1 +1,1 @@
-# vp2FinalProject This calendar application is a customizeable calendar that allows the user to change the color scheme (more settings coming soon) and add/edit events. Run it by running the main.java file. I do not use a CLI interface.
+# vp2FinalProject This calendar application is a customizeable calendar that allows the user to and add/edit/remove events, change the color scheme, and look at the names and dates for public holidays. Run it by running the main.java file. I do not use a CLI interface.
